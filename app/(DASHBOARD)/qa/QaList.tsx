@@ -37,7 +37,7 @@ const QaList = async ({ qas, totalTickets, pageSize }: Props) => {
 
 const renderRows = (qa: QaType) => {
   return (
-    <TableRow key={qa.id} className="odd:bg-slate-100">
+    <TableRow key={qa.id} className="odd:bg-slate-50">
       <TableCell>
         <div className="flex items-center gap-3">
           <Avatar src={qa.user.image?.url} />

@@ -20,12 +20,12 @@ const sideBarMenuItems = [
   {
     groupName: "Financial",
     subMenuItems: [
-      {
-        tabName: "Incomes",
-        tabHref: "/incomes",
-        tabIcon: BanknoteArrowUp,
-        subMenuItems: [],
-      },
+      // {
+      //   tabName: "Revenues",
+      //   tabHref: "/revenues",
+      //   tabIcon: BanknoteArrowUp,
+      //   subMenuItems: [],
+      // },
       {
         tabName: "Settlements",
         tabHref: "/settlements",

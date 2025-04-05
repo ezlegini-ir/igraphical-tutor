@@ -14,3 +14,13 @@ export function truncateFileName(name: string, maxLength = 20) {
 
   return baseName.slice(0, 10) + "....." + baseName.slice(-10) + extension;
 }
+
+export function formatPrice(
+  price: number | undefined,
+  options?: { noValuePlaceholder?: string; showNumber?: boolean }
+) {
+  if (!price)
+    return options?.showNumber ? 0 + " t" : options?.noValuePlaceholder || "--";
+
+  return price.toLocaleString("en-US") + " t";
+}

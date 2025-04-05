@@ -70,11 +70,13 @@ const page = async ({ searchParams }: Props) => {
         </div>
       </div>
 
-      <QaList
-        qas={tickets}
-        totalTickets={totalTickets}
-        pageSize={globalPageSize}
-      />
+      <div className="card">
+        <QaList
+          qas={tickets}
+          totalTickets={totalTickets}
+          pageSize={globalPageSize}
+        />
+      </div>
     </div>
   );
 };
