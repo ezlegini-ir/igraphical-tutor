@@ -13,7 +13,6 @@ import {
   ChartNoAxesCombined,
   LogOut,
   MessageCircleQuestion,
-  Users,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -86,7 +85,6 @@ const menuItems = [
     groupLabel: "Fast Menu",
     items: [
       { label: "Dashboard", href: "/", icon: ChartNoAxesCombined },
-      { label: "Students", href: "/students", icon: Users },
       { label: "Q & A", href: "/qa", icon: MessageCircleQuestion },
       { label: "Incomes", href: "/incomes", icon: BanknoteArrowUp },
       { label: "Settlements", href: "/settlements", icon: BanknoteArrowDown },
