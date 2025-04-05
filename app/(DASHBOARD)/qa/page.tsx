@@ -44,7 +44,7 @@ const page = async ({ searchParams }: Props) => {
         include: { image: true },
       },
     },
-    orderBy: { createdAt: "desc" },
+    orderBy: { updatedAt: "desc" },
 
     skip,
     take,

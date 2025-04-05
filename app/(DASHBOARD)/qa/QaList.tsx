@@ -45,7 +45,7 @@ const renderRows = (qa: QaType) => {
         </div>
       </TableCell>
 
-      <TableCell>
+      <TableCell className="hidden xl:table-cell">
         <div className="flex items-center gap-3">
           <Image
             alt=""
@@ -58,7 +58,9 @@ const renderRows = (qa: QaType) => {
         </div>
       </TableCell>
 
-      <TableCell>{formatDate(qa.createdAt)}</TableCell>
+      <TableCell className="hidden lg:table-cell">
+        {formatDate(qa.createdAt)}
+      </TableCell>
       <TableCell>{formatDate(qa.updatedAt)}</TableCell>
 
       <TableCell>
@@ -79,8 +81,8 @@ const renderRows = (qa: QaType) => {
 
 const columns = [
   { label: "User", className: "" },
-  { label: "Course", className: "" },
-  { label: "Created At", className: "" },
+  { label: "Course", className: "hidden xl:table-cell" },
+  { label: "Created At", className: "hidden lg:table-cell" },
   { label: "Last Message", className: "" },
   { label: "Status", className: "" },
   { label: "View", className: "" },

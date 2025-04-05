@@ -21,7 +21,7 @@ const DashboardHeader = async () => {
 
       <div className="flex items-center gap-5 lg:gap-6 text-gray-500/75">
         <div>
-          <Link href={"/qa?staus=PENDING"} className="relative">
+          <Link href={"/qa?status=PENDING"} className="relative">
             <MessageCircleQuestion size={22} />
             {pendingAskTutorsCount > 0 && (
               <Badge

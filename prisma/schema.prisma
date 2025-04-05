@@ -141,8 +141,8 @@ model File {
   ticketMessageId   Int?              @unique
   askTutorMessage   AskTutorMessages? @relation(fields: [askTutorMessageId], references: [id], onDelete: Cascade)
   askTutorMessageId Int?              @unique
-  certificate       Certificate       @relation(fields: [certificateId], references: [id])
-  certificateId     Int               @unique
+  certificate       Certificate?      @relation(fields: [certificateId], references: [id])
+  certificateId     Int?              @unique
 }
 
 enum FileType {
@@ -639,7 +639,7 @@ model ClassRoom {
   userId       Int
   enrollment   Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
   enrollmentId Int        @unique
-  askTutor     AskTutor?  @relation(fields: [askTutorId], references: [id])
+  askTutor     AskTutor?  @relation(fields: [askTutorId], references: [id], onDelete: Cascade)
   askTutorId   Int?       @unique
 
   @@unique([userId, enrollmentId, askTutorId])

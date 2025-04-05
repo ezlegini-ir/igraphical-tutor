@@ -21,3 +21,10 @@ export const otpFormSchema = z.object({
   otp: z.string().min(6),
 });
 export type OtpType = z.infer<typeof otpFormSchema>;
+
+//! QA FORM
+export const QaFormSchema = z.object({
+  message: z.string(),
+  file: z.instanceof(File).optional(),
+});
+export type QaFormType = z.infer<typeof QaFormSchema>;
