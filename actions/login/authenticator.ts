@@ -1,7 +1,6 @@
 "use server";
 
 import { signIn } from "@/auth";
-import { redirectAdmin } from "@/data/admin";
 import { redirect } from "next/navigation";
 
 export const authenticator = async (identifier: string) => {
@@ -12,6 +11,5 @@ export const authenticator = async (identifier: string) => {
 
   if (signInResponse?.error) return { error: "Invalid Credentials" };
 
-  // redirect("/login/redirect");
-  await redirectAdmin();
+  redirect("/");
 };

@@ -55,7 +55,7 @@ const InputForm = ({ setLoginStep, setIdentifier }: Props) => {
     <>
       <div className="text-sm text-gray-400">
         <p>Welcome Back,</p>
-        <h1 className="text-2xl text-black">Admin Login</h1>
+        <h1 className="text-2xl text-black">Tutor Login</h1>
         <p>Please provide credentials to log in...</p>
       </div>
 

@@ -1,9 +1,9 @@
 "use server";
 
-import { getAdminByIdentifier } from "@/data/admin";
+import { getTutorByIdentifier } from "@/data/admin";
 
 export async function verifyPassword(identifier: string, password: string) {
-  const existingUser = await getAdminByIdentifier(identifier);
+  const existingUser = await getTutorByIdentifier(identifier);
 
   if (!existingUser) return { error: "No User Found" };
 

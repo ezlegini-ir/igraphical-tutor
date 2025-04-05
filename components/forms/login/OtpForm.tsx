@@ -21,8 +21,7 @@ import useLoading from "@/hooks/useLoading";
 import { OtpType, otpFormSchema } from "@/lib/validationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
-import { CircleCheckBig, PartyPopper } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { CircleCheckBig } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -34,7 +33,6 @@ interface Props {
 
 const OtpForm = ({ setLoginStep, identifier }: Props) => {
   // HOOKS
-  const router = useRouter();
   const { loading, setLoading } = useLoading();
 
   const form = useForm<OtpType>({

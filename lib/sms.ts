@@ -2,7 +2,7 @@ import Kavenegar from "kavenegar";
 import { generateSmsOtp } from "./otp";
 
 var sms = Kavenegar.KavenegarApi({
-  apikey: process.env.NEXT_PUBLIC_KAVENEGAR_API!,
+  apikey: process.env.KAVENEGAR_API!,
 });
 
 export const sendOtpSms = async (phone: string) => {

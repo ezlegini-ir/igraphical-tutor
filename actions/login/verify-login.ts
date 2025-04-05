@@ -1,20 +1,23 @@
 "use server";
 
-import { getAdminByIdentifier } from "@/data/admin";
+import { getTutorByIdentifier } from "@/data/admin";
 import { sendOtp } from "@/lib/otp";
 import bcrypt from "bcrypt";
 
 export const verifyLogin = async (identifier: string, password: string) => {
-  const existingAdmin = await getAdminByIdentifier(identifier);
-  if (!existingAdmin) return { error: "Invalid Credentials" };
+  try {
+    const existingTutor = await getTutorByIdentifier(identifier);
+    if (!existingTutor) return { error: "Invalid Credentials" };
 
-  //TODO: BCRYPT COMPARE
-  const isValidPassword = await bcrypt.compare(
-    password,
-    existingAdmin.password
-  );
+    const isValidPassword = await bcrypt.compare(
+      password,
+      existingTutor.password
+    );
 
-  if (!isValidPassword) return { error: "Invalid Credentials" };
+    if (!isValidPassword) return { error: "Invalid Credentials" };
 
-  await sendOtp(identifier);
+    await sendOtp(identifier);
+  } catch (error) {
+    return { error: String(error) };
+  }
 };
