@@ -86,7 +86,6 @@ const menuItems = [
     items: [
       { label: "Dashboard", href: "/", icon: ChartNoAxesCombined },
       { label: "Q & A", href: "/qa", icon: MessageCircleQuestion },
-      { label: "Incomes", href: "/incomes", icon: BanknoteArrowUp },
       { label: "Settlements", href: "/settlements", icon: BanknoteArrowDown },
     ],
   },

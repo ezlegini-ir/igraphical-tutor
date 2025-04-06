@@ -479,15 +479,22 @@ enum PaymentStatus {
 }
 
 model Settlement {
-  id               Int      @id @default(autoincrement())
+  id               Int              @id @default(autoincrement())
   totalSell        Float
   totalEnrollments Int
   profit           Int
   amount           Float
-  paidAt           DateTime @default(now())
+  from             DateTime
+  to               DateTime
+  paidAt           DateTime?        @default(now())
+  status           SettlementStatus
+  tutor            Tutor            @relation(fields: [tutorId], references: [id], onDelete: Cascade)
+  tutorId          Int
+}
 
-  tutor   Tutor @relation(fields: [tutorId], references: [id], onDelete: Cascade)
-  tutorId Int
+enum SettlementStatus {
+  PENDING
+  PAID
 }
 
 //! MARKETING ---------------------------------------------------------
