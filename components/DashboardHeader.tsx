@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { getSessionTutor } from "@/data/admin";
-import prisma from "@/prisma/client";
+import { prisma } from "@igraphical/core";
 import { Home, MessageCircleQuestion } from "lucide-react";
 import Link from "next/link";
 import AdminUserBar from "./TutorBar";

@@ -1,7 +1,7 @@
 import Filter from "@/components/Filter";
 import Search from "@/components/Search";
 import { globalPageSize, pagination } from "@/data/pagination";
-import prisma from "@/prisma/client";
+import { prisma } from "@igraphical/core";
 import { AskTutorStatus, Prisma } from "@prisma/client";
 import QaList from "./QaList";
 import { getSessionTutor } from "@/data/admin";

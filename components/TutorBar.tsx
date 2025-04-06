@@ -9,7 +9,6 @@ import {
 import { Image, Tutor } from "@prisma/client";
 import {
   BanknoteArrowDown,
-  BanknoteArrowUp,
   ChartNoAxesCombined,
   LogOut,
   MessageCircleQuestion,

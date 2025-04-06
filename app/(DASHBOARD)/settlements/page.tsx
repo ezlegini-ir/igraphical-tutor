@@ -1,5 +1,5 @@
 import { globalPageSize, pagination } from "@/data/pagination";
-import prisma from "@/prisma/client";
+import { prisma } from "@igraphical/core";
 import SettlementsList from "./SettlementsList";
 import { getSessionTutor } from "@/data/admin";
 interface Props {

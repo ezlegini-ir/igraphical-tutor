@@ -1,5 +1,5 @@
 import { getSessionTutor } from "@/data/admin";
-import prisma from "@/prisma/client";
+import { prisma } from "@igraphical/core";
 import { format, startOfMonth, subMonths } from "date-fns";
 import { redirect } from "next/navigation";
 import { AreaChart } from "./components/AreaChart";

@@ -1,6 +1,6 @@
 "use server";
 
-import prisma from "@/prisma/client";
+import { prisma } from "@igraphical/core";
 import { uploadCloudFile } from "./cloudinary";
 import { UploadApiResponse } from "cloudinary";
 import { QaFormType } from "@/lib/validationSchema";
