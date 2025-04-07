@@ -11,7 +11,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { TableCell, TableRow } from "@/components/ui/table";
 import ViewButton from "@/components/ViewButton";
-import { formatDate } from "@/lib/date";
+import { formatDate } from "@/lib/utils";
 import { formatPrice } from "@/lib/utils";
 import { Image, Settlement, Tutor } from "@prisma/client";
 import { format } from "date-fns";
@@ -60,9 +60,9 @@ const renderRows = (settlement: SettlementType) => {
         {formatPrice(settlement.amount)}
       </TableCell>
 
-      <TableCell className="text-center">
+      <TableCell dir="rtl" className="text-center">
         {settlement.paidAt ? (
-          formatDate(settlement.paidAt)
+          formatDate(settlement.paidAt, { withTime: true })
         ) : (
           <span className="text-gray-400">Not Paid</span>
         )}
@@ -114,6 +114,27 @@ const SettlementContent = ({ settlement }: { settlement: SettlementType }) => {
           </Badge>
         </li>
 
+        <Separator />
+        <div className="space-y-1.5 text-right" dir="rtl">
+          <h4>نکات قابل توجه:</h4>
+          <ul className="list-disc list-inside text-gray-500">
+            <span className="font-semibold text-black">
+              مدرس محترم آی‌گرافیکال:
+            </span>
+            <li>
+              محاسبه حق فروش شما از ابتدای ماه میلادی تا انتهای ماه میلادی می
+              باشد.
+            </li>
+            <li>
+              پرداخت مبلغ محاسبه شده، حداکثر در روز 5ام ماه میلادیِ پیش رو خواهد
+              بود.
+            </li>
+            <li>
+              چنانچه در طول دوره مبلغ قابل پرداخت صفر باشد، پرداختی صورت نخواهد
+              گرفت اما رکورد آن به عنوان پرداخت شده 0 تومان، ایجاد خواهد شد.
+            </li>
+          </ul>
+        </div>
         <Separator />
 
         <Badge

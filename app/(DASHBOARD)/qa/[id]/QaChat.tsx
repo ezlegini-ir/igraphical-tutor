@@ -18,7 +18,7 @@ import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import useFileName from "@/hooks/useFileName";
 import useLoading from "@/hooks/useLoading";
-import { formatDate } from "@/lib/date";
+import { formatDate } from "@/lib/utils";
 import { truncateFileName as truncateName } from "@/lib/utils";
 import { QaFormSchema, QaFormType } from "@/lib/validationSchema";
 
@@ -224,7 +224,7 @@ const QaChat = ({ qa }: Props) => {
                       message.senderType === "TUTOR" && "bg-slate-100"
                     }`}
                   >
-                    <div className="w-full">
+                    <div className="w-full space-y-2">
                       <div className="flex items-center gap-2">
                         {message.senderType === "TUTOR" ? (
                           <Avatar src={qa.tutor.image?.url} />
@@ -237,8 +237,11 @@ const QaChat = ({ qa }: Props) => {
                               ? qa.tutor.displayName
                               : qa.user.fullName}
                           </span>
-                          <span className="text-xs text-gray-500 en-digits">
-                            {formatDate(message.createdAt)}
+                          <span className="text-xs text-gray-400 en-digits">
+                            {formatDate(message.createdAt, {
+                              useMonthName: false,
+                              withTime: true,
+                            })}
                           </span>
                         </div>
                       </div>
@@ -284,14 +287,18 @@ const QaChat = ({ qa }: Props) => {
               <div className="flex justify-between text-gray-500 text-xs">
                 <p className="flex flex-col">
                   <span>Created At</span>
-                  <span className="text-sm">{formatDate(qa?.createdAt!)}</span>
+                  <span dir="rtl" className="text-sm">
+                    {formatDate(qa?.createdAt!, { withTime: true })}
+                  </span>
                 </p>
                 <div>
                   <Separator orientation="vertical" />
                 </div>
-                <p className="flex flex-col">
+                <p className="flex flex-col text-right">
                   <span>Last Update</span>
-                  <span className="text-sm">{formatDate(qa?.updatedAt!)}</span>
+                  <span dir="rtl" className="text-sm">
+                    {formatDate(qa?.updatedAt!, { withTime: true })}
+                  </span>
                 </p>
               </div>
 

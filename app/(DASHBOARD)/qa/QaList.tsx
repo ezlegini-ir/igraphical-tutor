@@ -4,7 +4,7 @@ import Table from "@/components/Table";
 import { Badge } from "@/components/ui/badge";
 import { TableCell, TableRow } from "@/components/ui/table";
 import ViewButton from "@/components/ViewButton";
-import { formatDate } from "@/lib/date";
+import { smartFormatDate } from "@/lib/utils";
 import { placeHolder } from "@/public";
 import { AskTutor, Course, Image as ImageType, User } from "@prisma/client";
 import Image from "next/image";
@@ -58,10 +58,12 @@ const renderRows = (qa: QaType) => {
         </div>
       </TableCell>
 
-      <TableCell className="hidden lg:table-cell">
-        {formatDate(qa.createdAt)}
+      <TableCell dir="rtl" className="text-left hidden lg:table-cell">
+        {smartFormatDate(qa.createdAt)}
       </TableCell>
-      <TableCell>{formatDate(qa.updatedAt)}</TableCell>
+      <TableCell dir="rtl" className="text-left">
+        {smartFormatDate(qa.updatedAt)}
+      </TableCell>
 
       <TableCell>
         <Badge
