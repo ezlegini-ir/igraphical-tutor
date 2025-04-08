@@ -1,15 +1,6 @@
-import { UserRole } from "@prisma/client";
-import { DefaultSession, NextAuthConfig } from "next-auth";
+import { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { getTutorByIdentifier } from "./data/admin";
-
-declare module "next-auth" {
-  interface Session {
-    user: {
-      role: UserRole;
-    } & DefaultSession["user"];
-  }
-}
+import { getTutorById, getTutorByIdentifier } from "./data/admin";
 
 export default {
   pages: {
@@ -19,22 +10,28 @@ export default {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
+        const existingUser = await getTutorById(+user.id!);
+
+        if (!existingUser) return token;
+
         token.id = user.id;
-        token.role = (user as any).role;
+
+        return token;
       }
+
       return token;
     },
 
     session({ session, token }) {
       session.user.id = token.id as string;
-      session.user.role = token.role as UserRole;
+
       return session;
     },
   },
   providers: [
     Credentials({
-      id: "user-login",
-      name: "User Login",
+      id: "tutor-login",
+      name: "Tutor Login",
       credentials: {
         identifier: {},
       },
@@ -50,7 +47,7 @@ export default {
         const user = await getTutorByIdentifier(identifier);
         if (!user) throw new Error("User Not Found");
 
-        return { id: user.id.toString(), role: user.role };
+        return { id: user.id.toString() };
       },
     }),
   ],

@@ -18,6 +18,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Dispatch, SetStateAction } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 interface Props {
   setIdentifier: Dispatch<React.SetStateAction<string>>;
@@ -35,11 +36,23 @@ const InputForm = ({ setLoginStep, setIdentifier }: Props) => {
       password: "",
     },
   });
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const sendOtp = async (data: LoginFormType) => {
     setLoading(true);
 
-    const res = await verifyLogin(data.phoneOrEmail, data.password);
+    if (!executeRecaptcha) {
+      toast.error("reCaptcha not loaded, please try again...");
+      setLoading(false);
+      return;
+    }
+    const recaptchaToken = await executeRecaptcha("login_form");
+
+    const res = await verifyLogin(
+      data.phoneOrEmail,
+      data.password,
+      recaptchaToken
+    );
 
     if (res?.error) {
       toast.error(res.error);

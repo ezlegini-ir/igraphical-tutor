@@ -4,7 +4,7 @@ import { signIn } from "@/auth";
 import { redirect } from "next/navigation";
 
 export const authenticator = async (identifier: string) => {
-  const signInResponse = await signIn("user-login", {
+  const signInResponse = await signIn("tutor-login", {
     identifier,
     redirect: false,
   });
